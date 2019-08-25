@@ -1,0 +1,15 @@
+{
+  "name": "arqcefet",
+  "version": "1.0.0",
+  "main": "src/buscacep/main.js",
+  "repository": "https://github.com/mhbarros/arqcefet.git",
+  "author": "Marcelo Barros <mhbarros99@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "cep": "node src/buscacep/main.js",
+    "dev-cep": "nodemon src/buscacep/main.js"
+  },
+  "dependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
