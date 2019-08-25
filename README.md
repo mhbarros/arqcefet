@@ -15,6 +15,6 @@ nome_do_projeto ( pasta do trabalho )
 <ul>main.js ( arquivo de entrada )</ul>
 </ul>
 Todos os arquivos referentes ao trabalho ficam situados na pasta <strong>src</strong> e cada projeto sua pasta.<br><br>
-Para executar algum trabalho, basta abrir o CMD do Windows / terminal do linux na <strong>raiz do projeto</strong> ( um nível antes da pasta src )e digitar um dos seguintes comandos:<br>
-<li>npm buscacep</li>
+Para executar algum trabalho, basta abrir o CMD do Windows / terminal do linux na <strong>raiz do projeto</strong> ( um nível antes da pasta src )e digitar um dos seguintes comandos:<br><br>
+<li>npm buscacep</li><br>
 <i>Mais em breve...</i>
