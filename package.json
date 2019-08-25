@@ -6,8 +6,8 @@
   "author": "Marcelo Barros <mhbarros99@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "cep": "node src/buscacep/main.js",
-    "dev-cep": "nodemon src/buscacep/main.js"
+    "buscacep": "node src/buscacep/main.js",
+    "dev-buscacep": "nodemon src/buscacep/main.js"
   },
   "dependencies": {
     "nodemon": "^1.19.1"
