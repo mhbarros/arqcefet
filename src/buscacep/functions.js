@@ -65,7 +65,7 @@ const downloadArquivo = (CEP) => {
 
     /* Realizando o download do arquivo */
     const file = fs.createWriteStream(process.cwd() + '/src/buscacep/cep_ordenado.dat');
-    const request = http.get('https://uc7037ec36e03729b105d915bed2.dl.dropboxusercontent.com/cd/0/get/An5laHPVE1cdItggzQrrjpUGHLpd8IVc6XnJCvaVbQ0MSC0wpnGgMwuXpQd48TQZ-YxqkDx_I9ou9aM08zVivYa3zLrCnY5cggvE4BXxJ_q-Kv4CWJDcQlgYusMukeHDMcY/file?_download_id=6917535384632645810064763390340481707700312369513885628568009962&_notify_domain=www.dropbox.com&dl=1', (response) => {
+    const request = http.get('https://dl.dropboxusercontent.com/cd/0/get/An4Z-JF9k4zBsiiBDMVqVX1VYEKJYPtUNA6Zl2KKHNogj6zv_ZdI-ZG1Pj6pIs6iMN4LuHqHQECr5f94cmdHanKgO9F8jRDK2crJpSU9014SztY16yGc2cTA0cBm4-pAZvo/file?dl=1#', (response) => {
 
         response.pipe(file);
 
