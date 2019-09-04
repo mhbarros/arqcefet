@@ -16,7 +16,7 @@ if (CEP.length > 8 || CEP.length < 8) {
 fs.open(process.cwd() + '/src/buscacep/cep_ordenado.dat', 'r', (err, fd) => {
 
     if (err) {
-        console.log('Poxa, não encontrei o arquivo de cep =(. Vou fazer o download para você, aguarde um pouco..\n Caso não queira aguardar o download, apenas jogue o arquivo cep_ordenado.dat dentro da pasta /src/buscacep e reinicie o programa.');
+        console.log('Não encontrei o arquivo cep_ordenado.dat em /src/buscacep. Vou fazer o download para você, aguarde um momento.. Aproveite para pegar um café =) \n Caso não queira aguardar o download, apenas jogue o arquivo cep_ordenado.dat dentro da pasta /src/buscacep e reinicie o programa.\n');
         downloadArquivo(CEP);
 
     } else {
