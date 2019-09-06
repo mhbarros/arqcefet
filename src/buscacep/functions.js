@@ -12,7 +12,7 @@ const buscaCep = (fd, CEP) => {
         var meio   = 0;
         let fim    = a.size / TAM_LINHA - 1;
 
-        let numIteracoes = 1;
+        let numIteracoes = 0;
 
         let endereco = '';
         let rua      = '';
@@ -23,6 +23,8 @@ const buscaCep = (fd, CEP) => {
 
         while (inicio <= fim) {
             numIteracoes++;
+
+            meio = Math.floor((inicio + fim) / 2);
 
             fs.readSync(fd, buffer, 0, TAM_LINHA, TAM_LINHA * meio); // Lendo uma linha e jogando no buffer
 
@@ -48,8 +50,6 @@ const buscaCep = (fd, CEP) => {
             } else { // Caso o cep da iteração seja maior do que o cep entrado pelo usuário
                 fim = meio - 1;
             }
-
-            meio = Math.floor((inicio + fim) / 2);
         }
         if(endereco === ''){
             console.log("Não encontrei nenhum endereço com esse cep... Você digitou corretamente?")
@@ -65,7 +65,7 @@ const downloadArquivo = (CEP) => {
 
     /* Realizando o download do arquivo */
     const file = fs.createWriteStream(process.cwd() + '/src/buscacep/cep_ordenado.dat');
-    const request = http.get('https://dl.dropboxusercontent.com/cd/0/get/An4Z-JF9k4zBsiiBDMVqVX1VYEKJYPtUNA6Zl2KKHNogj6zv_ZdI-ZG1Pj6pIs6iMN4LuHqHQECr5f94cmdHanKgO9F8jRDK2crJpSU9014SztY16yGc2cTA0cBm4-pAZvo/file?dl=1#', (response) => {
+    const request = http.get('https://dl.dropboxusercontent.com/cd/0/get/AoCPvGZDYX3zFnKGAxMev3urQzuMXwJtWgltqvURuHw92YMW6RFK4tgBdb2Z-3_BeJt0aDhVSBjlRBqDDOScp4P1WZF07WXFnIXO5K7JkBYxFB1-l6wpitqwWYMs9BTo2vU/file?dl=1#', (response) => {
 
         response.pipe(file);
 
@@ -79,6 +79,12 @@ const downloadArquivo = (CEP) => {
     let interval = setInterval(() => {
 
         let p = Math.round(request.connection.bytesRead / tamanhoArquivo * 100);
+
+        if(isNaN(p)){
+            clearInterval(interval);
+            process.stdout.write("O link para download está quebrado =( \n Por favor, coloque o arquivo cep_ordenado.dat em src/buscacep .");
+            return;
+        }
 
         rl.cursorTo(process.stdout, 0);
         process.stdout.write(`Baixando o arquivo cep_ordenado.dat... ${p}%`);
