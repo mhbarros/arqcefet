@@ -10,6 +10,7 @@ O NodeJS acompanha um gerênciador de dependências chamado <strong>NPM</strong>
 ## Executando os trabalhos
 Com o NodeJS e o NPM instalados, agora é preciso entender a estrutura de pastas do repositório:<br>
 <li>src</li>
+<ul>data ( Pasta de arquivos estáticos, independentes de projetos )</ul>
 <ul>
 nome_do_projeto ( pasta do trabalho )
 <ul>main.js ( arquivo de entrada )</ul>
@@ -22,7 +23,7 @@ Para executar algum trabalho, basta abrir o CMD do Windows / terminal do linux n
 
 ### BuscaCep
 Programa utilizando o algoritmo de busca binária para encontrar um endereço pelo cep dentro de um arquivo de 200MB.<br>
-Observação: É necessário ter o arquivo cep_ordenado.dat dentro da pasta <strong>/src/buscacep</strong>. Caso não possua, o programa irá realizar o download automaticamente =), então basta rodar <strong>npm run-script buscacep 22220001</strong> 
+Observação: É necessário ter o arquivo cep_ordenado.dat dentro da pasta <strong>/src/data</strong>. Caso não possua, o programa irá realizar o download automaticamente =), então basta rodar <strong>npm run-script buscacep 22220001</strong> 
 
 ### External Merge Sort
 Em breve

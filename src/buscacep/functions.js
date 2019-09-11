@@ -64,8 +64,8 @@ const downloadArquivo = (CEP) => {
     let tamanhoArquivo = 0;
 
     /* Realizando o download do arquivo */
-    const file = fs.createWriteStream(process.cwd() + '/src/buscacep/cep_ordenado.dat');
-    const request = http.get('https://dl.dropboxusercontent.com/cd/0/get/AoCPvGZDYX3zFnKGAxMev3urQzuMXwJtWgltqvURuHw92YMW6RFK4tgBdb2Z-3_BeJt0aDhVSBjlRBqDDOScp4P1WZF07WXFnIXO5K7JkBYxFB1-l6wpitqwWYMs9BTo2vU/file?dl=1#', (response) => {
+    const file = fs.createWriteStream(process.cwd() + '/src/data/cep_ordenado.dat');
+    const request = http.get('https://www.dropbox.com/s/m5ywbh4b3ov6rqh/cep_ordenado.dat?dl=1', (response) => {
 
         response.pipe(file);
 
@@ -91,7 +91,7 @@ const downloadArquivo = (CEP) => {
 
         if(p == 100){
 
-            fs.open(process.cwd() + '/src/buscacep/cep_ordenado.dat', 'r', (err, fd) => {
+            fs.open(process.cwd() + '/src/data/cep_ordenado.dat', 'r', (err, fd) => {
 
                 buscaCep(fd, CEP);
             });
