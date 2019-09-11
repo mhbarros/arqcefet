@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "buscacep": "node src/buscacep/main.js",
+    "extmergesort": " node src/extMergeSort/main.js",
     "dev-buscacep": "nodemon src/buscacep/main.js"
   },
   "dependencies": {

@@ -17,8 +17,12 @@ nome_do_projeto ( pasta do trabalho )
 Todos os arquivos referentes ao trabalho ficam situados na pasta <strong>src</strong> e cada projeto sua pasta.<br><br>
 Para executar algum trabalho, basta abrir o CMD do Windows / terminal do linux na <strong>raiz do projeto</strong> ( um nível antes da pasta src )e digitar um dos seguintes comandos:<br><br>
 <li>npm run-script buscacep [seu cep]</li><br>
+<li>npm run-script extmergesort</li><br>
 <i>Mais em breve...</i><br>
 
 ### BuscaCep
 Programa utilizando o algoritmo de busca binária para encontrar um endereço pelo cep dentro de um arquivo de 200MB.<br>
 Observação: É necessário ter o arquivo cep_ordenado.dat dentro da pasta <strong>/src/buscacep</strong>. Caso não possua, o programa irá realizar o download automaticamente =), então basta rodar <strong>npm run-script buscacep 22220001</strong> 
+
+### External Merge Sort
+Em breve
