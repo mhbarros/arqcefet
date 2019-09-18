@@ -20,9 +20,9 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
     let inicio = 0;
     let fim = QTD_ARQUIVOS;
 
-    while(!(inicio + 1 == fim)){
+    /*while(!(inicio + 1 == fim)){
 
-    }
+    }*/
 
 
 
