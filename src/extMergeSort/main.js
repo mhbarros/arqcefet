@@ -14,12 +14,14 @@ try {
 
 // Separando o arquivo em arquivos menores
 if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
-    // for(let i = 0; i < QTD_ARQUIVOS ; i++){
-        let fdArquivoCep = fs.openSync(process.cwd() + '/src/extMergeSort/data/cep_0.dat', 'r');
-        quickSort(fdArquivoCep);
-    // }
+     for(let i = 0; i < QTD_ARQUIVOS ; i++){
+        let fdArquivoCep = fs.openSync(process.cwd() + `/src/extMergeSort/data/cep_${i}.dat`, 'r');
+        quickSort(fdArquivoCep, i);
+     }
 
-    // Terminou a ordenação de todos os arquivos
+    // Terminou a ordenação de todos os arquivos ( São feitas operações síncronas )
+
+    // Intercalar os arquivos
 
 
 

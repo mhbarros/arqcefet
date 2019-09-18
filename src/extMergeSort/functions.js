@@ -44,7 +44,7 @@ const separaArquivo = (fd, qtdArquivos) => {
     return true;
 };
 
-const quickSort = (fd) => {
+const quickSort = (fd, numArquivo) => {
      let buffer = Buffer.alloc(TAM_LINHA);
 
     let statsCep = null;
@@ -84,8 +84,14 @@ const quickSort = (fd) => {
         return 0;
     });
 
-    fs.writeFileSync('./teste.txt', enderecos[0].cep);
+    // Removendo o arquivo anterior para substituir pelo novo
+    fs.unlinkSync(`./src/extMergeSort/data/cep_${numArquivo}.dat`);
+    fs.closeSync(fd);
 
+    enderecos.forEach((v) => {
+        let novoEndereco = v.rua + v.bairro + v.cidade + v.estado + v.sigla + v.cep + "\n";
+        fs.appendFileSync(`./src/extMergeSort/data/cep_${numArquivo}.dat`, novoEndereco);
+    });
 };
 
 const merge = (fd) => {
