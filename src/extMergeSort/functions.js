@@ -72,13 +72,19 @@ const quickSort = (fd) => {
         let sigla    = end.substr(288, 2);
         let cep      = end.substr(290, 8);
 
-        if(i == 200){
-            console.log(cep);
-            break;
-        }
-
-        // enderecos.push({rua:rua, bairro:bairro, cidade:cidade, estado:estado, sigla:sigla, cep:cep});
+        enderecos.push({rua, bairro, cidade, estado, sigla, cep});
     }
+
+    enderecos.sort((a,b) => {
+        if(a.cep < b.cep){
+            return -1;
+        }else if(b.cep < a.cep){
+            return 1;
+        }
+        return 0;
+    });
+
+    fs.writeFileSync('./teste.txt', enderecos[0].cep);
 
 };
 
