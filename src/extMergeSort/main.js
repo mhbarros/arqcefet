@@ -1,7 +1,7 @@
 const fs = require('fs');
-const {separaArquivo, quickSort} = require('./functions');
+const {separaArquivo, quickSort, merge} = require('./functions');
 
-const QTD_ARQUIVOS = 10;
+const QTD_ARQUIVOS = 8;
 
 let fdCepDat = null;
 
@@ -14,6 +14,13 @@ try {
 
 // Separando o arquivo em arquivos menores
 if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
-    // let fdArquivoCep = fs.openSync(process.cwd() + '/src/extMergeSort/arquivos_separados/cep_0.dat', 'w');
-    // quickSort(fdArquivoCep);
+    // for(let i = 0; i < QTD_ARQUIVOS ; i++){
+        let fdArquivoCep = fs.openSync(process.cwd() + '/src/extMergeSort/data/cep_0.dat', 'r');
+        quickSort(fdArquivoCep);
+    // }
+
+    // Terminou a ordenação de todos os arquivos
+
+
+
 }
