@@ -75,6 +75,7 @@ const quickSort = (registros) => {
 
     if(typeof registros !== 'undefined'){
         let enderecos = registros.split('\n');
+        enderecos.length--; // Remove o ultimo elemento, que seria um espaço em branco.
 
         enderecos.sort((a,b) => {
             let cepa    = a.substr(290, 8);
@@ -93,37 +94,7 @@ const quickSort = (registros) => {
         return enderecos;
     }
 
-    /*for (let i = 0; i < tamArquivo; i++) {
-
-        // Jogando para estrutura
-        let rua    = registros.substr(0, 72);
-        let bairro = registros.substr(72, 72);
-        let cidade = registros.substr(144, 72);
-        let estado = registros.substr(216, 72);
-        let sigla  = registros.substr(288, 2);
-        let cep    = registros.substr(290, 8);
-
-        enderecos.push({rua, bairro, cidade, estado, sigla, cep});
-    }
-
-    enderecos.sort((a, b) => {
-        if (a.cep < b.cep) {
-            return -1;
-        } else if (b.cep < a.cep) {
-            return 1;
-        }
-        return 0;
-    });*/
-
-    // Removendo o arquivo anterior para substituir pelo novo
-    /*fs.unlinkSync(`./src/extMergeSort/data/cep_${numArquivo}.dat`);
-    fs.closeSync(fd);
-
-    enderecos.forEach((v) => {
-        let novoEndereco = v.rua + v.bairro + v.cidade + v.estado + v.sigla + v.cep + "\n";
-        fs.appendFileSync(`./src/extMergeSort/data/cep_${numArquivo}.dat`, novoEndereco);
-    });*/
-    return enderecos;
+    return null;
 };
 
 const merge = (fd) => {
