@@ -41,9 +41,8 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
         let nomeArquivoSaida = `cep_${fim}.dat`;
         if(fim == 14)
             nomeArquivoSaida = 'cep_ordenado.dat';
+
         let arquivoSaida = fs.openSync(process.cwd() + `/src/extMergeSort/data/${nomeArquivoSaida}`, 'a');
-
-
 
         let buffera = new Buffer.alloc(TAM_LINHA);
         let bufferb = new Buffer.alloc(TAM_LINHA);
