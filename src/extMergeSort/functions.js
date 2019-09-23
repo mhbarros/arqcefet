@@ -15,7 +15,7 @@ const separaArquivo = (fd, qtdArquivos) => {
 
     // Definindo variáveis para início da leitura
 
-    let qtdRegistros = 16;
+    let qtdRegistros = statsCepDat.size / TAM_LINHA;
     let qtdPorArquivo = Math.floor(qtdRegistros / qtdArquivos);
 
     let quebrado = qtdRegistros % qtdArquivos;

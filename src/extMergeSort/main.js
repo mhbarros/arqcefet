@@ -30,7 +30,7 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
     // fdCepDat = fs.openSync(process.cwd() + '/src/data/cep.dat', 'r');
 
     let inicio = 0;
-    let fim = QTD_ARQUIVOS;
+    let fim    = QTD_ARQUIVOS;
 
     while(fim <= 14){
 
@@ -73,6 +73,8 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
                 cepb = parseInt(iconv.encode(bufferb.toString('latin1'), 'iso-8859-1').toString().substr(290, 10));
 
 
+            }else{
+                break;
             }
 
         }
@@ -83,7 +85,7 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
 
             buffera = new Buffer.alloc(TAM_LINHA);
             fs.readSync(arquivoa, buffera, 0, TAM_LINHA, TAM_LINHA * ca);
-            cepa = parseInt(iconv.encode(buffera.toString('latin1'), 'iso-8859-1').toString().substr(290, 8));
+            cepa = parseInt(iconv.encode(buffera.toString('latin1'), 'iso-8859-1').toString().substr(290, 10));
         }
 
         while(cepb){
@@ -93,7 +95,7 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
 
             bufferb = new Buffer.alloc(TAM_LINHA);
             fs.readSync(arquivob, bufferb, 0, TAM_LINHA, TAM_LINHA * cb);
-            cepb    = parseInt(iconv.encode(bufferb.toString('latin1'), 'iso-8859-1').toString().substr(290, 8));
+            cepb    = parseInt(iconv.encode(bufferb.toString('latin1'), 'iso-8859-1').toString().substr(290, 10));
 
         }
 
