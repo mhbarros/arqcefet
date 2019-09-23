@@ -37,7 +37,13 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
         // Abre dois arquivos sequenciais + um arquivo para saída
         let arquivoa = fs.openSync(process.cwd() + `/src/extMergeSort/data/cep_${inicio}.dat`, 'r');
         let arquivob = fs.openSync(process.cwd() + `/src/extMergeSort/data/cep_${inicio + 1}.dat`, 'r');
-        let arquivoSaida = fs.openSync(process.cwd() + `/src/extMergeSort/data/cep_${fim}.dat`, 'w');
+
+        let nomeArquivoSaida = `cep_${fim}.dat`;
+        if(fim == 14)
+            nomeArquivoSaida = 'cep_ordenado.dat';
+        let arquivoSaida = fs.openSync(process.cwd() + `/src/extMergeSort/data/${nomeArquivoSaida}`, 'a');
+
+
 
         let buffera = new Buffer.alloc(TAM_LINHA);
         let bufferb = new Buffer.alloc(TAM_LINHA);
@@ -45,8 +51,8 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
         fs.readSync(arquivoa, buffera , 0, TAM_LINHA, 0);
         fs.readSync(arquivob, bufferb , 0, TAM_LINHA, 0);
 
-        var cepa    = parseInt(iconv.encode(buffera.toString('latin1'), 'iso-8859-1').toString().substr(290, 10));
-        var cepb    = parseInt(iconv.encode(bufferb.toString('latin1'), 'iso-8859-1').toString().substr(290, 10));
+        var cepa = parseInt(iconv.encode(buffera.toString('latin1'), 'iso-8859-1').toString().substr(290, 10));
+        var cepb = parseInt(iconv.encode(bufferb.toString('latin1'), 'iso-8859-1').toString().substr(290, 10));
 
         let ca = 0;
         let cb = 0;
@@ -56,7 +62,8 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
             if(cepa < cepb){
                 ca++;
 
-                fs.appendFileSync(process.cwd() + `/src/extMergeSort/data/cep_${fim}.dat`, iconv.encode(buffera.toString('latin1'), 'iso-8859-1'));
+                fs.writeSync(arquivoSaida, iconv.encode(buffera.toString('latin1'), 'iso-8859-1'));
+
                 buffera = new Buffer.alloc(TAM_LINHA);
                 fs.readSync(arquivoa, buffera, 0, TAM_LINHA, TAM_LINHA * ca);
 
@@ -65,10 +72,10 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
             }else if(cepb < cepa){
                 cb++;
 
-                fs.appendFileSync(process.cwd() + `/src/extMergeSort/data/cep_${fim}.dat`, iconv.encode(bufferb.toString('latin1'), 'iso-8859-1'));
+                fs.writeSync(arquivoSaida, iconv.encode(bufferb.toString('latin1'), 'iso-8859-1'));
+
                 bufferb = new Buffer.alloc(TAM_LINHA);
                 fs.readSync(arquivob, bufferb, 0, TAM_LINHA, TAM_LINHA * cb);
-
 
                 cepb = parseInt(iconv.encode(bufferb.toString('latin1'), 'iso-8859-1').toString().substr(290, 10));
 
@@ -81,7 +88,7 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
 
         while(cepa){
             ca++;
-            fs.appendFileSync(process.cwd() + `/src/extMergeSort/data/cep_${fim}.dat`, iconv.encode(buffera.toString('latin1'), 'iso-8859-1'));
+            fs.writeSync(arquivoSaida, iconv.encode(buffera.toString('latin1'), 'iso-8859-1'));
 
             buffera = new Buffer.alloc(TAM_LINHA);
             fs.readSync(arquivoa, buffera, 0, TAM_LINHA, TAM_LINHA * ca);
@@ -91,7 +98,7 @@ if(separaArquivo(fdCepDat, QTD_ARQUIVOS)){
         while(cepb){
 
             cb++;
-            fs.appendFileSync(process.cwd() + `/src/extMergeSort/data/cep_${fim}.dat`, iconv.encode(bufferb.toString('latin1'), 'iso-8859-1'));
+            fs.writeSync(arquivoSaida, iconv.encode(bufferb.toString('latin1'), 'iso-8859-1'));
 
             bufferb = new Buffer.alloc(TAM_LINHA);
             fs.readSync(arquivob, bufferb, 0, TAM_LINHA, TAM_LINHA * cb);
