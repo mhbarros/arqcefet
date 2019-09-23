@@ -73,7 +73,7 @@ const separaArquivo = (fd, qtdArquivos) => {
             fs.appendFileSync(nomeArquivo, iconv.encode(final, 'iso-8859-1'));
         }
     }
-    process.exit(12);
+
     return true;
 };
 
