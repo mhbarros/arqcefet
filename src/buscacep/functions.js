@@ -28,8 +28,8 @@ const buscaCep = (fd, CEP) => {
 
             fs.readSync(fd, buffer, 0, TAM_LINHA, TAM_LINHA * meio); // Lendo uma linha e jogando no buffer
 
-            let enderecoTemp    = buffer.toString('latin1');
-            let cepEndereco = enderecoTemp.substr(290, 8);
+            let enderecoTemp = buffer.toString('latin1');
+            let cepEndereco  = enderecoTemp.substr(290, 8);
 
             // Caso o cep da iteração seja igual ao cep entrado pelo usuário
             if (cepEndereco === CEP) {

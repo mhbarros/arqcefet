@@ -15,7 +15,7 @@ const separaArquivo = (fd, qtdArquivos) => {
 
     // Definindo variáveis para início da leitura
 
-    let qtdRegistros = statsCepDat.size / TAM_LINHA;
+    let qtdRegistros = 16;
     let qtdPorArquivo = Math.floor(qtdRegistros / qtdArquivos);
 
     let quebrado = qtdRegistros % qtdArquivos;
@@ -33,14 +33,18 @@ const separaArquivo = (fd, qtdArquivos) => {
             // Os endereços estão no buffer. Ordena-los
             let enderecos = quickSort(buffer.toString('latin1'), qtdPorArquivo);
             let final = '';
+            let c = 0;
             enderecos.forEach((v) => {
                 let rua    = v.substr(0, 72);
                 let bairro = v.substr(72, 72);
                 let cidade = v.substr(144, 72);
                 let estado = v.substr(216, 72);
                 let sigla  = v.substr(288, 2);
-                let cep    = v.substr(290, 8);
-                final += '\n' + rua + bairro + cidade + estado + sigla + cep;
+                let cep    = v.substr(290, 10);
+
+                final += rua + bairro + cidade + estado + sigla + cep;
+
+                c++;
 
             });
             fs.appendFileSync(nomeArquivo, iconv.encode(final, 'iso-8859-1'));
@@ -61,13 +65,15 @@ const separaArquivo = (fd, qtdArquivos) => {
                 let cidade = v.substr(144, 72);
                 let estado = v.substr(216, 72);
                 let sigla  = v.substr(288, 2);
-                let cep    = v.substr(290, 8);
-                final += '\n' + rua + bairro + cidade + estado + sigla + cep;
+                let cep    = v.substr(290, 10);
+                final += rua + bairro + cidade + estado + sigla + cep;
 
             });
+
             fs.appendFileSync(nomeArquivo, iconv.encode(final, 'iso-8859-1'));
         }
     }
+    process.exit(12);
     return true;
 };
 
@@ -78,8 +84,9 @@ const quickSort = (registros) => {
         enderecos.length--; // Remove o ultimo elemento, que seria um espaço em branco.
 
         enderecos.sort((a,b) => {
-            let cepa    = a.substr(290, 8);
-            let cepb    = b.substr(290, 8);
+
+            let cepa    = a.substr(290, 9);
+            let cepb    = b.substr(290, 9);
 
             if(parseInt(cepa) < parseInt(cepb)){
                 return -1;
