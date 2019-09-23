@@ -104,4 +104,4 @@ const quickSort = (registros) => {
     return null;
 };
 
-module.exports = {separaArquivo, quickSort, merge};
+module.exports = {separaArquivo, quickSort};
