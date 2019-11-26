@@ -30,3 +30,8 @@ Programa que realiza um External Merge Sort. Divide um arquivo grande ( cep.dat 
 <b>Observação</b>: É necessário ter o arquivo cep.dat dentro da pasta <strong>/src/data</strong>.<br><br>
 <b>Observação2</b>: Foi necessário utilizar a biblioteca [iconv-lite](https://www.npmjs.com/package/iconv-lite)  para realizar a codificação para latin1. Ao utilizar o método <strong>toString()</strong> no NodeJS, ele converte tudo para UTF-8. Como não há meios nativos de realizar a conversão de volta, foi preciso utilizar a bilblioteca.
 
+### CepArvoreB
+Em Construção
+### BolsaFamilia
+Em Construção
+
